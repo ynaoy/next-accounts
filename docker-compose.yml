@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./next
+    command: yarn dev
+    volumes:
+      #- ./next/src:/nextjs-accounts
+      - ./next/src/nextjs-accounts:/nextjs-accounts
+      - ./next/src/nextjs-accounts/node_modules:/nextjs-accounts/node_modules
+    ports:
+      - "3000:3000"
+    tty: true
+volumes:
+  node_modules:
