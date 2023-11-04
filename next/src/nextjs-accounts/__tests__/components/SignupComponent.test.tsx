@@ -24,7 +24,7 @@ describe('SignupComponent', ()=>{
     setLoginFlgMock.mockClear()
   });
 
-  test('サブミットボタンをクリックした時にログイン状態が変更される', () => {
+  test("サブミットボタンをクリックした時にログイン状態が変更される", () => {
     //レンダー
     render(<SignupComponent/>);
     //サブミットボタンがあるか確認
@@ -37,4 +37,13 @@ describe('SignupComponent', ()=>{
     //userRouter().push()が呼び出されている
     expect(routerPushMock).toHaveBeenCalled()
   });
+
+  test("ログイン中だったらuseRouter().push()が呼び出されリダイレクトされる",()=>{
+    //ログインする
+    setLoginFlgMock()
+    //レンダー
+    render(<SignupComponent/>);
+    //userRouter().push()が呼び出されている
+    expect(routerPushMock).toHaveBeenCalled()
+  })
 })
