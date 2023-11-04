@@ -1,6 +1,6 @@
 import { FormType } from "./types/Form.d"
 
-export default function Form({onClick, children}:FormType){
+export default function Form({onClick, buttonText, children}:FormType){
   return (
     <form className="space-y-4 md:space-y-6">
       { children }
@@ -10,7 +10,7 @@ export default function Form({onClick, children}:FormType){
                    font-medium rounded-lg text-sm px-5 py-2.5 text-center
                    dark:focus:ring-blue-800 shadow-lg 
                   shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80">
-          登録
+        { buttonText }
       </button>
     </form>
     )

@@ -5,7 +5,7 @@ const onClickMock = jest.fn()
 describe("FormComponent", ()=>{
   test("サブミットボタンが存在するかと子コンポーネントが表示されているテスト", () => {
     //レンダー
-    render(<Form onClick={onClickMock}>
+    render(<Form onClick={onClickMock} buttonText="登録">
             <div> チルドレン </div>
            </Form>);
     //サブミットボタンがあるか確認
@@ -16,7 +16,7 @@ describe("FormComponent", ()=>{
 
   test("サブミットボタンをクリックした時にonSubmitが呼び出される",()=>{
     //レンダー
-    render(<Form onClick={onClickMock}/>);
+    render(<Form onClick={onClickMock} buttonText="登録"/>);
     //サブミットボタンがあるか確認
     const button = screen.getByRole("button", {name: "登録"})
     expect(button).toBeTruthy()

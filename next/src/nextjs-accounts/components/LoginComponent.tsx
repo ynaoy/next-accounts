@@ -23,7 +23,8 @@ export default function SignupComponent(){
                 ログイン
             </h1>
             <Form onClick={()=>{ setLoginFlg(()=>!loginFlg);
-                                 router.push("/")}}>
+                                 router.push("/")}}
+                  buttonText = "ログイン">
               <FormItem onChange={(e)=>dispatch({type: 'edited_email',email: e.target.value})} 
                 id="email" type="email" labelText="メールアドレス"/>
               <FormItem onChange={(e)=>dispatch({type: 'edited_password',password: e.target.value})} 
