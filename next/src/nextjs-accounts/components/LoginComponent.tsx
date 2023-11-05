@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import { useRouter } from 'next/router'
 import { UseLoginFlgContext, UseSetLoginFlgContext } from '../hooks/loginFlgContext';
-import { initialState, loginReducer } from '../hooks/loginReducer';
+import { initialState, userReducer } from '../hooks/userReducer';
 import Form from './forms/Form';
 import FormItem from './forms/FormItem';
 
@@ -10,7 +10,7 @@ export default function SignupComponent(){
   const router = useRouter()
   const loginFlg = UseLoginFlgContext();
   const setLoginFlg = UseSetLoginFlgContext()
-  const [state, dispatch] = useReducer(loginReducer, initialState)
+  const [state, dispatch] = useReducer(userReducer, initialState)
   if(loginFlg) router.push("/")
   return (
     <>

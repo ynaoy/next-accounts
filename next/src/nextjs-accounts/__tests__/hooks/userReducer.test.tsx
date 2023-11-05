@@ -4,12 +4,12 @@
 import { renderHook } from "@testing-library/react";
 import { act } from 'react-dom/test-utils';
 import { useReducer } from 'react';
-import { initialState, signupReducer } from '../../hooks/signupReducer';
+import { initialState, userReducer } from '../../hooks/userReducer';
 
-describe('signupReducer', ()=>{
+describe('userReducer', ()=>{
   
   test('Reducerの生成と初期値のテスト', () => {
-    const hook = renderHook(() => useReducer(signupReducer, initialState))
+    const hook = renderHook(() => useReducer(userReducer, initialState))
     const [state, dispatch] = hook.result.current
     //初期値の確認
     expect(state.userName).toBe('')
@@ -19,7 +19,7 @@ describe('signupReducer', ()=>{
 
   test('UserNameの更新のテスト', () => {
     let userName='Edited UserName'
-    const hook = renderHook(() => useReducer(signupReducer, initialState))
+    const hook = renderHook(() => useReducer(userReducer, initialState))
     const [state, dispatch] = hook.result.current
     //初期値の確認
     //ユーザーネームの更新
@@ -34,7 +34,7 @@ describe('signupReducer', ()=>{
 
   test('Emailの更新のテスト', () => {
     let email='Edited Email'
-    const hook = renderHook(() => useReducer(signupReducer, initialState))
+    const hook = renderHook(() => useReducer(userReducer, initialState))
     const [state, dispatch] = hook.result.current
     //メールアドレスの更新
     act(() => {
@@ -48,7 +48,7 @@ describe('signupReducer', ()=>{
 
   test('Passwordの更新のテスト', () => {
     let password='Edited Password'
-    const hook = renderHook(() => useReducer(signupReducer, initialState))
+    const hook = renderHook(() => useReducer(userReducer, initialState))
     const [state, dispatch] = hook.result.current
     //パスワードの更新
     act(() => {
@@ -61,7 +61,7 @@ describe('signupReducer', ()=>{
   })
 
   test('Stateのリセットのテスト', () => {
-    const hook = renderHook(() => useReducer(signupReducer, {userName:'userName',
+    const hook = renderHook(() => useReducer(userReducer, {userName:'userName',
                                                              email:'email',
                                                              password:'password'}))
     const [state, dispatch] = hook.result.current

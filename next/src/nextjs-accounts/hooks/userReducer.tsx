@@ -4,7 +4,7 @@ export const initialState = {
   password:'',
 };
 
-export function signupReducer(state:any, action:any) {
+export function userReducer(state:any, action:any) {
   switch (action.type) {
     case 'edited_userName': {
       return {
