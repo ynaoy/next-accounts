@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { useRouter } from 'next/router'
 import { UseLoginFlgContext, UseSetLoginFlgContext } from '../hooks/loginFlgContext';
 import { initialState, userReducer } from '../hooks/userReducer';
@@ -11,7 +11,15 @@ export default function SignupComponent(){
   const loginFlg = UseLoginFlgContext();
   const setLoginFlg = UseSetLoginFlgContext()
   const [state, dispatch] = useReducer(userReducer, initialState)
-  if(loginFlg) router.push("/")
+  
+  const redirectToIndexPage =()=>{
+    `indexページにリダイレクトする`
+    if(router.isReady) router.push("/")
+  }
+  useEffect(() => {
+    if(loginFlg) redirectToIndexPage()
+  },[loginFlg]);
+
   return (
     <>
     <section className="bg-gray-50 dark:bg-gray-900 w-full y-full">

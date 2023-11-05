@@ -6,18 +6,17 @@ import Form from './forms/Form';
 import FormItem from './forms/FormItem';
 
 
-export default function SignupComponent(){
+export default function UpdateComponent(){
   const router = useRouter()
   const loginFlg = UseLoginFlgContext();
-  const setLoginFlg = UseSetLoginFlgContext()
   const [state, dispatch] = useReducer(userReducer, initialState)
-  
-  const redirectToIndexPage =()=>{
-    `indexページにリダイレクトする`
-    if(router.isReady) router.push("/")
+
+  const redirectToLoginPage =()=>{
+    `loginページにリダイレクトする`
+    if(router.isReady) router.push("/login")
   }
   useEffect(() => {
-    if(loginFlg) redirectToIndexPage()
+    if(!loginFlg) redirectToLoginPage()
   },[loginFlg]);
 
   return (
@@ -28,15 +27,14 @@ export default function SignupComponent(){
                         dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                ログイン
+                ユーザー更新
             </h1>
-            <Form onClick={()=>{ setLoginFlg(()=>!loginFlg);
-                                 router.push("/")}}
-                  buttonText = "ログイン">
+            <Form onClick={()=> router.push("/")}
+                  buttonText = "更新">
+              <FormItem onChange={(e)=>dispatch({type: 'edited_userName',userName: e.target.value})} 
+                id="userName" type="text" labelText="ユーザーネーム"/>
               <FormItem onChange={(e)=>dispatch({type: 'edited_email',email: e.target.value})} 
                 id="email" type="email" labelText="メールアドレス"/>
-              <FormItem onChange={(e)=>dispatch({type: 'edited_password',password: e.target.value})} 
-                id="password" type="password" labelText="パスワード"/>
             </Form>
           </div>
         </div>

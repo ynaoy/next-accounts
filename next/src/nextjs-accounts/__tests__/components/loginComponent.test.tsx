@@ -15,13 +15,15 @@ let routerPushMock = jest.fn()
 jest.mock("next/router", () => {
   return {
     ...jest.requireActual("next/router"),
-    useRouter: ()=> {return {push: routerPushMock}},
+    useRouter: ()=> {return { push: routerPushMock,
+                              isReady:true}},
   }
 })
 
 describe("loginComponent", ()=>{
   afterEach(() => {
     setLoginFlgMock.mockClear()
+    loginFlgMock = false
   });
 
   test("サブミットボタンをクリックした時にログイン状態が変更される", () => {

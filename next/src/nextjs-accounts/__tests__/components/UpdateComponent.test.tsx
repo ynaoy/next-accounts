@@ -1,5 +1,5 @@
 import { render, screen, fireEvent} from "@testing-library/react";
-import SignupComponent from "../../components/SignupComponent"
+import UpdateComponent from "../../components/UpdateComponent";
 
 //コンテキストのモック
 let loginFlgMock = false
@@ -20,32 +20,30 @@ jest.mock("next/router", () => {
   }
 })
 
-describe('SignupComponent', ()=>{
+describe("UpdateComponent", ()=>{
   afterEach(() => {
     setLoginFlgMock.mockClear()
     routerPushMock.mockClear()
     loginFlgMock = false
   });
 
-  test("サブミットボタンをクリックした時にログイン状態が変更される", () => {
+  test("サブミットボタンをクリックした時に画面が遷移する", () => {
+    //ログインする
+    setLoginFlgMock()
     //レンダー
-    render(<SignupComponent/>);
+    render(<UpdateComponent/>);
     //サブミットボタンがあるか確認
-    const button = screen.getByRole('button', {name: '登録'})
+    const button = screen.getByRole("button", {name: "更新"})
     expect(button).toBeTruthy()
     //サブミットボタンをクリック
     fireEvent.click(button)
-    //setloginFlg(value)が呼び出されている
-    expect(setLoginFlgMock).toHaveBeenCalled()
     //userRouter().push()が呼び出されている
     expect(routerPushMock).toHaveBeenCalled()
   });
 
-  test("ログイン中だったらuseRouter().push()が呼び出されリダイレクトされる",()=>{
-    //ログインする
-    setLoginFlgMock()
+  test("ログイン中でないならuseRouter().push()が呼び出されリダイレクトされる",()=>{
     //レンダー
-    render(<SignupComponent/>);
+    render(<UpdateComponent/>);
     //userRouter().push()が呼び出されている
     expect(routerPushMock).toHaveBeenCalled()
   })
