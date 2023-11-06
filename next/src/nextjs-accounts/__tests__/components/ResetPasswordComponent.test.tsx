@@ -37,8 +37,6 @@ describe('SignupComponent', ()=>{
     expect(button).toBeTruthy()
     //サブミットボタンをクリック
     fireEvent.click(button)
-    //setloginFlg(value)が呼び出されている
-    expect(setLoginFlgMock).toHaveBeenCalled()
     //userRouter().push()が呼び出されている
     expect(routerPushMock).toHaveBeenCalled()
   });

@@ -30,8 +30,7 @@ export default function SignupComponent(){
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 パスワード変更
             </h1>
-            <Form onClick={()=>{ setLoginFlg(()=>!loginFlg);
-                                 redirectToIndexPage()}}
+            <Form onClick={()=>{ redirectToIndexPage()}}
                   buttonText = "変更">
               <FormItem onChange={(e)=>dispatch({type: 'edited_password',password: e.target.value})} 
                 id="password" type="password" labelText="新しいパスワード"/>
