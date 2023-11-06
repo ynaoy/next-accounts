@@ -8,6 +8,7 @@ import CyanButton from './buttons/CyanButton';
 export default function IndexComponent(){
   const loginFlg = UseLoginFlgContext();
   const setLoginFlg = UseSetLoginFlgContext()
+  const logout =()=>setLoginFlg(false)
   return (
     <div className="flex flex-col justify-center items-center">
       <PinkButton onClick={()=>setLoginFlg(!loginFlg)} size="sm">
@@ -16,20 +17,18 @@ export default function IndexComponent(){
 
       {loginFlg?(
       <>
-        <Link href='/'>
-          <OrangeButton size="lg">
-            Logout
-          </OrangeButton>
-        </Link>
+        <OrangeButton size="lg" onClick={()=>logout()}>
+          Logout
+        </OrangeButton>
       </>
       ):(
       <>
-        <Link href='/'>
+        <Link href='/signup'>
           <BlueButton size="lg">
             Signup
           </BlueButton>
         </Link>
-        <Link href='/'>
+        <Link href='/login'>
           <CyanButton size="lg">
             Login
           </CyanButton>
