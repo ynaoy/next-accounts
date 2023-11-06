@@ -4,6 +4,8 @@ import PinkButton from './buttons/PinkButton';
 import OrangeButton from './buttons/OrangeButton';
 import BlueButton from './buttons/BlueButton';
 import CyanButton from './buttons/CyanButton';
+import GreenButton from './buttons/GreenButton'
+import RedButton from './buttons/RedButton'
 
 export default function IndexComponent(){
   const loginFlg = UseLoginFlgContext();
@@ -20,6 +22,16 @@ export default function IndexComponent(){
         <OrangeButton size="lg" onClick={()=>logout()}>
           Logout
         </OrangeButton>
+        <Link href='/update'>
+          <GreenButton size="lg">
+            Update
+          </GreenButton>
+        </Link>
+        <Link href='/resetPassword'>
+          <RedButton size="lg">
+            ResetPassword
+          </RedButton>
+        </Link>
       </>
       ):(
       <>
